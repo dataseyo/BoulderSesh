@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet} from 'react-native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -13,10 +13,32 @@ import Profile from './pages/Profile';
 const Stack = createNativeStackNavigator()
 const BottomTabs = createBottomTabNavigator()
 
+const NavTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#04080F',
+    background: "#04080F",
+    border: "#04080F"
+  }
+}
+
 export default function App() {
   return (
-      <NavigationContainer>
-        <BottomTabs.Navigator>
+      <NavigationContainer theme={NavTheme}>
+        <StatusBar/>
+        <BottomTabs.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#04080F"
+            },
+            headerTintColor: "white",
+            tabBarStyle: {
+              backgroundColor: "#04080F"
+            },
+            tabBarActiveTintColor: "#BBD1EA"
+          }}
+        >
           <BottomTabs.Screen 
             name="Home" 
             component={Home} 

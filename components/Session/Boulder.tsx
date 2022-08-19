@@ -3,6 +3,7 @@ import React from 'react'
 
 type BoulderProps = {
     grade: Number,
+    attempts: Number,
     RPE: Number,
     name?: String
 }
@@ -10,9 +11,7 @@ type BoulderProps = {
 const Boulder = ({grade, RPE, name}: BoulderProps) => {
   return (
     <View>
-      <Text>
-          
-      </Text>
+      <Text>{name}</Text>
     </View>
   )
 }

@@ -1,13 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-type BoulderProps = {
-  grade: Number,
-  attempts: Number,
-  RPE: Number,
-  name?: String
-}
-
 type Props = {
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -31,7 +24,8 @@ const styles = StyleSheet.create({
   addSessionButton: {
     backgroundColor: '#507DBC',
     borderRadius: 5,
-    padding: 5
+    padding: 5,
+    width: '50%'
   },
 
   addSessionText: {

@@ -1,19 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-import SessionList from '../components/Home/SessionList'
-
 type Props = {}
 
-const Home = (props: Props) => {
+const BoulderList = (props: Props) => {
   return (
     <View>
-      <Text>Home</Text>
-      <SessionList />
+      <Text>BoulderList</Text>
     </View>
   )
 }
 
-export default Home
+export default BoulderList
 
 const styles = StyleSheet.create({})

@@ -1,21 +1,29 @@
 import { StyleSheet, Text, View, NativeSyntheticEvent, TextInputChangeEventData, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+type BoulderProps = {
+  grade: Number,
+  attempts: Number,
+  RPE: Number,
+  name?: String
+}
+
 type Props = {
   id: number,
   name: string,
-  navigation: any
+  boulders: BoulderProps[]
+  navigation: any,
 }
 
 const SessionCard = (props: Props) => {
   return (
     <View style={styles.sessionCardView}>
       <TouchableOpacity
-        onPress={() => props.navigation.navigate('SessionInstance', {name: props.name, id: props.id})}
+        onPress={() => props.navigation.navigate('SessionInstance', {name: props.name, id: props.id, boulders: props.boulders})}
       >
-        <Text>SessionCard</Text>
-        <Text>{props.name}</Text>
-        <Text>{props.id}</Text>
+        <Text style={styles.sessionCardTitle}>Session</Text>
+        <Text style={styles.sessionCardText}>{props.name}</Text>
+        <Text style={styles.sessionCardText}>{props.id}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -28,11 +36,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 5,
     minWidth: '80%',
     margin: 10,
     padding: 10,
     overflow: 'scroll'
+  },
+
+  sessionCardTitle: {
+    
+    color: 'white'
+  },
+
+  sessionCardText: {
+    color: 'white'
   }
 })

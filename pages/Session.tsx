@@ -4,7 +4,8 @@ import { StyleSheet,
         View, 
         Modal, 
         TextInput, 
-        TouchableOpacity } from 'react-native'
+        TouchableOpacity,
+        StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavigationProp, ParamListBase } from '@react-navigation/core';
@@ -33,35 +34,5 @@ const Session = () => {
 export default Session
 
 const styles = StyleSheet.create({
-  sessionView: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
 
-  modalContainer: {
-    flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 20,
-  },
-
-  modalView: {
-    backgroundColor: 'black',
-    padding: 8
-  },
-
-  modalTitle: {
-    color: 'white',
-    fontSize: 20
-  },
-
-  modalText: {
-    color: 'white'
-  },
-
-  input: {
-    backgroundColor: 'white'
-  }
 })

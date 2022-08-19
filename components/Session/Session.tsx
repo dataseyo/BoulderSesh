@@ -10,46 +10,85 @@ import { StyleSheet,
 import React, { useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
 
 // native imports
 import SessionCard from './SessionCard';
 import AddSession from './AddSession';
 
+type BoulderProps = {
+    grade: Number,
+    attempts: Number,
+    RPE: Number,
+    name?: String
+}
+
 const Session = ({navigation} : any) => {
 
-// modal state
-const [openModal, setOpenModal] = useState(false)
-const [form, setForm] = useState({
-id: 0,
-name: ""
-})
+    // modal state
+    const [openModal, setOpenModal] = useState(false)
+    const [form, setForm] = useState({
+        id: 0,
+        name: "",
+        boulders: [
+            {
+                grade: 0,
+                attempts: 0,
+                RPE: 0,
+                name: ""
+            }
+        ]
+    })
 
 
-const onSessionAdded = () => {
-setSessions([...sessions, form])
+    const onSessionAdded = () => {
+    setSessions([...sessions, form])
 
-setForm({
-  name: "",
-  id: Math.random()
-})
-}
+    setForm({
+        name: "",
+        id: Math.random(),
+        boulders: [
+            {
+                grade: 0,
+                attempts: 0,
+                RPE: 0,
+                name: ""
+            }
+        ]
+    })}
 
 // sessions state
 const [sessions, setSessions] = useState([
-{
-  id: 1,
-  name: "test 1"
-},
-{
-  id: 2,
-  name: "test 2"
-}
+    {
+        id: 1,
+        name: "test 1",
+        boulders: [
+            {
+                grade: 0,
+                attempts: 0,
+                RPE: 0,
+                name: ""
+            }
+        ]
+    },
+    {
+        id: 2,
+        name: "test 2",
+        boulders: [
+            {
+                grade: 0,
+                attempts: 0,
+                RPE: 0,
+                name: ""
+            }
+        ]
+    }
 ])
 
 return (
 <View style={styles.sessionView}>
-        <AddSession setSessions={setSessions} setOpenModal={setOpenModal}/>
-        <ScrollView>
+        <AddSession setOpenModal={setOpenModal}/>
+        <ScrollView style={styles.scroll}>
         {sessions.map(session => {
             return (
             <SessionCard {...session} key={session.id} navigation={navigation}/>
@@ -58,7 +97,7 @@ return (
         </ScrollView>
 
   <Modal
-    animationType="slide"
+    animationType="fade"
     transparent={true}
     visible={openModal}
     onRequestClose={() => {
@@ -97,35 +136,41 @@ return (
 export default Session
 
 const styles = StyleSheet.create({
-sessionView: {
-display: 'flex',
-flexDirection: 'column',
-justifyContent: 'center',
-alignItems: 'center'
-},
+    sessionView: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 
-modalContainer: {
-flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-},
+    scroll: {
+        width: '100%',
+        height: '100%'
+    },
 
-modalView: {
-backgroundColor: 'black',
-padding: 8
-},
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20,
+    },
 
-modalTitle: {
-color: 'white',
-fontSize: 20
-},
+    modalView: {
+        backgroundColor: '#DAE3E5',
+        padding: 8
+    },
 
-modalText: {
-color: 'white'
-},
+    modalTitle: {
+        color: 'black',
+        fontSize: 20
+    },
 
-input: {
-backgroundColor: 'white'
-}
+    modalText: {
+        color: 'black'
+    },
+
+    input: {
+        backgroundColor: 'black',
+        color: 'white'
+    }
 })
